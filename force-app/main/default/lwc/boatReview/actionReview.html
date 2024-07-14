@@ -1,0 +1,39 @@
+<template>
+    <li class="slds-feed__item" key={boatReview.Id}>
+
+      <article class="slds-card">
+        <div class="slds-card__header slds-grid">
+          <header class="slds-media slds-media_center slds-has-flexi-truncate">
+            <div class="slds-media__figure">
+              <lightning-avatar variant="circle" src={boatReview.CreatedBy.SmallPhotoUrl}></lightning-avatar>
+            </div>
+            <div class="slds-media__body">
+              <h2 class="slds-card__header-title">
+                <span>{boatReview.CreatedBy.Name}</span>                 
+              </h2>
+              <p class="slds-text-body_small slds-line-height_reset">
+                <lightning-formatted-date-time value={boatReview.CreatedDate}></lightning-formatted-date-time>
+              </p>
+            </div>
+            <div class="slds-no-flex">
+              <button class="slds-button slds-button_neutral" onclick={handleOpenReview}>Open Review</button>
+            </div>
+          </header>
+        </div>
+        <div class="slds-card__body slds-card__body_inner">
+          <div class="slds-m-top_large">
+            <strong>Boat name:</strong> {boatReview.Boat__r.Name}
+          </div>
+          <div class="slds-m-top_medium">
+            <c-five-star-rating value={boatReview.Rating__c} read-only="true"></c-five-star-rating>
+          </div>
+          <div class="slds-text-longform slds-m-bottom_large">
+            <p><strong>{boatReview.Name}</strong></p>
+            <lightning-formatted-rich-text value={boatReview.Comment__c}></lightning-formatted-rich-text>
+          </div>
+        </div>
+        <footer class="slds-card__footer">
+        </footer>
+      </article>
+      </li>
+</template>

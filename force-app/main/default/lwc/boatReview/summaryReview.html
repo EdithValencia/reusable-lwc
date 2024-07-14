@@ -1,0 +1,23 @@
+<template>
+    <li class="slds-feed__item" key={boatReview.Id}>
+        <article class="slds-post">
+          <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-4">
+              <c-five-star-rating value={boatReview.Rating__c} read-only="true"></c-five-star-rating>
+              <div class="slds-m-top_medium"><strong>{boatReview.CreatedBy.Name}</strong></div>
+              <p class="slds-text-body_small">
+                <lightning-formatted-date-time value={boatReview.CreatedDate}></lightning-formatted-date-time>
+              </p>
+            </div>
+            <div class="slds-col slds-size_3-of-4">
+              <div class="slds-text-longform">
+                <div class="slds-m-top_x-small"><strong>{boatReview.Name}</strong></div>
+                <div class="slds-m-top_medium">
+                  <lightning-formatted-rich-text value={boatReview.Comment__c}></lightning-formatted-rich-text>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </li>
+</template>

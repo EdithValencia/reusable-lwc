@@ -1,0 +1,24 @@
+<template>
+    <!-- div for when there are no reviews available -->
+    <template if:false={reviewsToShow}>
+      <div class="slds-align_absolute-center slds-scrollable_y">No reviews available</div>
+    </template>
+    <!-- div for when there are reviews available -->
+    <template if:true={reviewsToShow}>
+      <div class="slds-feed slds-is-relative slds-scrollable_y">
+      <!-- insert spinner -->
+        <template if:true={isLoading}>
+          <lightning-spinner alternative-text="Loading" size="small" variant="brand"></lightning-spinner>
+        </template>
+        <ul class="slds-feed__list">
+          <!-- start iteration -->
+          <template for:each={boatReviews} for:item="boatReview">
+            <c-boat-review key={boatReview.Id} boat-review={boatReview} 
+            review-display-type={reviewDisplayType} 
+            onopenreview={handleOpenReview}></c-boat-review>
+          </template>
+        </ul>
+      </div>
+    </template>
+  </template>
+  
